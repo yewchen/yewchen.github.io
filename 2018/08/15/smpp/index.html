@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="SMPP研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考這篇文章。SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的1.4R">
+<meta name="keywords" content="Protocol">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://yewchen.github.io/2018/08/15/hello-world/index.html">
+<meta property="og:title" content="SMPP 學習筆記">
+<meta property="og:url" content="https://yewchen.github.io/2018/08/15/smpp/index.html">
 <meta property="og:site_name" content="Happy4GodSoup">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="SMPP研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考這篇文章。SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的1.4R">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-15T02:14:11.155Z">
+<meta property="og:updated_time" content="2018-08-15T05:13:52.970Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="SMPP 學習筆記">
+<meta name="twitter:description" content="SMPP研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考這篇文章。SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的1.4R">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yewchen.github.io/2018/08/15/hello-world/"/>
+  <link rel="canonical" href="https://yewchen.github.io/2018/08/15/smpp/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>Hello World | Happy4GodSoup</title>
+  <title>SMPP 學習筆記 | Happy4GodSoup</title>
   
 
 
@@ -280,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2018/08/15/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2018/08/15/smpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Selph">
@@ -297,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">SMPP 學習筆記
               
             
           </h1>
@@ -322,7 +323,7 @@
                 
               
 
-              <time title="Created: 2018-08-15 10:37:47 / Modified: 10:14:11" itemprop="dateCreated datePublished" datetime="2018-08-15T10:37:47+08:00">2018-08-15</time>
+              <time title="Created: 2018-08-15 11:52:46 / Modified: 13:13:52" itemprop="dateCreated datePublished" datetime="2018-08-15T11:52:46+08:00">2018-08-15</time>
             
 
             
@@ -360,15 +361,7 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="SMPP"><a href="#SMPP" class="headerlink" title="SMPP"></a>SMPP</h2><p>研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。<br>SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考<a href="https://wirelessr.gitbooks.io/working-life/content/tlvsu_cheng_jiang_jie.html" target="_blank" rel="noopener">這篇文章</a>。<br>SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的1.4Reference：GSM 03.40 v5.7.1、GSM 03.38 v5.5.1、GSM MAP 09.02 v5.11.0。</p>
 
       
     </div>
@@ -387,6 +380,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Protocol/" rel="tag"># Protocol</a>
+          
+        </div>
+      
 
       
       
@@ -396,15 +395,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/15/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/15/smpp/" rel="prev" title="SMPP 學習筆記">
-                SMPP 學習筆記 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -527,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP"><span class="nav-number">1.</span> <span class="nav-text">SMPP</span></a></li></ol></div>
             
 
           </div>
