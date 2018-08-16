@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-TW">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -112,14 +112,14 @@
 
 
 
-  <meta name="description" content="前言 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考這篇文章。   SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的">
+  <meta name="description" content="前言 國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的in">
 <meta name="keywords" content="Protocol">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SMPP 學習筆記">
 <meta property="og:url" content="https://yewchen.github.io/2018/08/15/smpp/index.html">
 <meta property="og:site_name" content="Happy4GodSoup">
-<meta property="og:description" content="前言 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考這篇文章。   SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的">
-<meta property="og:locale" content="default">
+<meta property="og:description" content="前言 國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的in">
+<meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/outbind.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/outbind.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/txsession.png">
@@ -130,10 +130,16 @@
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/pduformat.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/pducommandid.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/pducommandstatus.png">
-<meta property="og:updated_time" content="2018-08-16T05:32:21.886Z">
+<meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/ton.png">
+<meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/npi.png">
+<meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/esm_esme.png">
+<meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/esm_smsc.png">
+<meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/registereddelivery.png">
+<meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/dataconfig.png">
+<meta property="og:updated_time" content="2018-08-16T08:28:47.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SMPP 學習筆記">
-<meta name="twitter:description" content="前言 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考這篇文章。   SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的">
+<meta name="twitter:description" content="前言 國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的in">
 <meta name="twitter:image" content="https://yewchen.github.io/2018/08/15/smpp/outbind.png">
 
 
@@ -191,7 +197,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
 
   
   
@@ -217,7 +223,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切換導航欄">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -237,7 +243,15 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首頁</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />標籤</a>
   </li>
         
         
@@ -245,7 +259,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />歸檔</a>
   </li>
 
       
@@ -331,14 +345,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">發表於</span>
               
 
               
                 
               
 
-              <time title="Created: 2018-08-15 11:52:46" itemprop="dateCreated datePublished" datetime="2018-08-15T11:52:46+08:00">2018-08-15</time>
+              <time title="創建時間：2018-08-15 11:52:46" itemprop="dateCreated datePublished" datetime="2018-08-15T11:52:46+08:00">2018-08-15</time>
             
 
             
@@ -353,9 +367,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新於</span>
                 
-                <time title="Modified: 2018-08-16 13:32:21" itemprop="dateModified" datetime="2018-08-16T13:32:21+08:00">2018-08-16</time>
+                <time title="修改時間：2018-08-16 16:28:47" itemprop="dateModified" datetime="2018-08-16T16:28:47+08:00">2018-08-16</time>
               
             
           </span>
@@ -388,7 +402,8 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol start="0">
+<li>國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。</li>
 <li>研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。 </li>
 <li>SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考<a href="https://wirelessr.gitbooks.io/working-life/content/tlvsu_cheng_jiang_jie.html" target="_blank" rel="noopener">這篇文章</a>。  </li>
 <li>SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的1.4Reference：GSM 03.40 v5.7.1、GSM 03.38 v5.5.1、GSM MAP 09.02 v5.11.0。  </li>
@@ -548,12 +563,17 @@
 <td>Integer</td>
 </tr>
 <tr>
-<td>sequence_number</td>
+<td>Sequence_number</td>
 <td>4</td>
 <td>Integer</td>
 </tr>
 <tr>
-<td>Message_body</td>
+<td>Mandatory Parameter</td>
+<td>var.</td>
+<td>mixed  </td>
+</tr>
+<tr>
+<td>Optional Parameter</td>
 <td>var.</td>
 <td>mixed  </td>
 </tr>
@@ -565,7 +585,38 @@
 <p>Note：同一個session的request/response，command_id必須一致。  </p>
 </blockquote>
 <p><img src="pducommandid.png" alt="">  </p>
-<h4 id="command-status"><a href="#command-status" class="headerlink" title="command_status"></a>command_status</h4><p>由ESME發起request給SMSC的值必須為<code>NULL</code><br>response則參考以下表格<br><img src="pducommandstatus.png" alt="">  </p>
+<h5 id="Command-status"><a href="#Command-status" class="headerlink" title="Command_status"></a>Command_status</h5><p>由ESME發起request給SMSC的值必須為<code>NULL</code><br>response則參考以下表格<br><img src="pducommandstatus.png" alt="">  </p>
+<h5 id="Sequence-number"><a href="#Sequence-number" class="headerlink" title="Sequence_number"></a>Sequence_number</h5><p>用來識別request與response為同一session。<br>此值由ESME決定，值域為0x00000001~0x7FFFFFFF（單調遞增）。<br>當此值遞增至最大值以後，將從0x00000001開始重新計起。  </p>
+<h5 id="Mandatory-Parameter"><a href="#Mandatory-Parameter" class="headerlink" title="Mandatory Parameter"></a>Mandatory Parameter</h5><h6 id="system-id"><a href="#system-id" class="headerlink" title="system_id"></a>system_id</h6><p>bind時識別ESME與SMSC用。</p>
+<h6 id="password"><a href="#password" class="headerlink" title="password"></a>password</h6><p>SMSC提供一組密碼以驗證ESME的bind；<br>ESME提供一組密碼以驗證SMSC的outbind。  </p>
+<h6 id="system-type"><a href="#system-type" class="headerlink" title="system_type"></a>system_type</h6><p>表明ESME的類別，例如為VMS或OTA等等。根據不同的SMSC，某些情況下會允許此參數填寫<code>NULL</code>。</p>
+<h6 id="interface-version"><a href="#interface-version" class="headerlink" title="interface_version"></a>interface_version</h6><p>表明連線所使用的SMPP版本號：<br>若版本號為v3.3或更舊則參數值應填0x00~0x33<br>若版本號為v3.4則參數值填0x34  </p>
+<h6 id="addr-ton-source-addr-ton-dest-addr-ton-esme-addr-ton"><a href="#addr-ton-source-addr-ton-dest-addr-ton-esme-addr-ton" class="headerlink" title="addr_ton, source_addr_ton, dest_addr_ton, esme_addr_ton"></a>addr_ton, source_addr_ton, dest_addr_ton, esme_addr_ton</h6><p>TON：Type of Number，號碼型式。<br>目前號碼主要分為以下幾類：<br><img src="ton.png" alt="">  </p>
+<h6 id="addr-npi-source-addr-npi-dest-addr-npi-esme-addr-npi"><a href="#addr-npi-source-addr-npi-dest-addr-npi-esme-addr-npi" class="headerlink" title="addr_npi, source_addr_npi, dest_addr_npi, esme_addr_npi"></a>addr_npi, source_addr_npi, dest_addr_npi, esme_addr_npi</h6><p>NPI：Number Plan Indicator，號碼分類計劃。<br>目前主要分為以下幾類：<br><img src="npi.png" alt="">  </p>
+<h6 id="address-range"><a href="#address-range" class="headerlink" title="address_range"></a>address_range</h6><p>用來給短訊指定SME路由（可多數個），以及將狀態報告回傳給ESME。如不需要可以設置為<code>NULL</code>。</p>
+<h6 id="source-addr"><a href="#source-addr" class="headerlink" title="source_addr"></a>source_addr</h6><p>主叫位址，如不需要可以設置<code>NULL</code>；SMSC也可以設定default。</p>
+<h6 id="destination-addr"><a href="#destination-addr" class="headerlink" title="destination_addr"></a>destination_addr</h6><p>被叫位址，如不需要可以設置<code>NULL</code>；即MSISDN。</p>
+<h6 id="esme-addr"><a href="#esme-addr" class="headerlink" title="esme_addr"></a>esme_addr</h6><p>ESME位址，用以接收Alert_notification。  </p>
+<h6 id="service-type"><a href="#service-type" class="headerlink" title="service_type"></a>service_type</h6><p>好像沒用到？不確定。後補。</p>
+<h6 id="esm-class"><a href="#esm-class" class="headerlink" title="esm_class"></a>esm_class</h6><p>指定Message Mode、Message Type、GSM Network Specific Feature。  </p>
+<blockquote>
+<p>目前只有使用到SAF。  </p>
+</blockquote>
+<p>ESME-&gt;SMSC esm_class<br><img src="esm_esme.png" alt=""><br>SMSC-&gt;ESME esm_class<br><img src="esm_smsc.png" alt="">  </p>
+<h6 id="protocol-id"><a href="#protocol-id" class="headerlink" title="protocol_id"></a>protocol_id</h6><p>應都是設置為GSM。  </p>
+<blockquote>
+<p>Note: GSM03.40  </p>
+</blockquote>
+<h6 id="priority-flag"><a href="#priority-flag" class="headerlink" title="priority_flag"></a>priority_flag</h6><p>priority會根據不同的網路有不同相對應的含意，例如：GSM、ANSI-136、IS-95。<br>這裡只討論GSM。在GSM裡，若0即代表無優先級；&gt;0則代表具有傳送優先權。</p>
+<h6 id="schedule-delivery-time"><a href="#schedule-delivery-time" class="headerlink" title="schedule_delivery_time"></a>schedule_delivery_time</h6><p>沒用到，掰掰。  </p>
+<h6 id="validity-period"><a href="#validity-period" class="headerlink" title="validity_period"></a>validity_period</h6><p>即訊息在SMSC的存活時間，超過則丟棄。（目前好像也沒用到，以SMSC default的時間為主）  </p>
+<h6 id="registered-delivery"><a href="#registered-delivery" class="headerlink" title="registered_delivery"></a>registered_delivery</h6><p>用來要求SMSC回傳指定訊息給ESME。目前只使用<code>xxxxxx01</code>。<br><img src="registereddelivery.png" alt="">  </p>
+<h6 id="replace-if-present-flag"><a href="#replace-if-present-flag" class="headerlink" title="replace_if_present_flag"></a>replace_if_present_flag</h6><p>沒用到，掰掰。  </p>
+<h6 id="data-config"><a href="#data-config" class="headerlink" title="data_config"></a>data_config</h6><p>目前好像只用到這三個。  </p>
+<blockquote>
+<p>Note:<br>a. 參考GSM03.38<br>b. 參考GSM03.38</p>
+</blockquote>
+<p><img src="dataconfig.png" alt="">  </p>
 
       
     </div>
@@ -638,10 +689,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目錄
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            本站概要
           </li>
         </ul>
       
@@ -662,7 +713,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">文章</span>
                   </a>
                 </div>
               
@@ -679,7 +730,7 @@
                       
                     
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">標籤</span>
                   
                 </div>
               
@@ -714,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Session-Description"><span class="nav-number">2.</span> <span class="nav-text">SMPP Session Description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Outbind"><span class="nav-number">2.1.</span> <span class="nav-text">Outbind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TX-SMSC"><span class="nav-number">2.2.</span> <span class="nav-text">ESME-TX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-RX-SMSC"><span class="nav-number">2.3.</span> <span class="nav-text">ESME-RX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TRX-SMSC"><span class="nav-number">2.4.</span> <span class="nav-text">ESME-TRX-SMSC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Mode"><span class="nav-number">3.</span> <span class="nav-text">SMPP Message Mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SAF"><span class="nav-number">3.1.</span> <span class="nav-text">SAF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Datagram"><span class="nav-number">3.2.</span> <span class="nav-text">Datagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transaction-mode"><span class="nav-number">3.3.</span> <span class="nav-text">Transaction mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Type"><span class="nav-number">4.</span> <span class="nav-text">SMPP Message Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMSC-Delivery-Receipt"><span class="nav-number">4.1.</span> <span class="nav-text">SMSC Delivery Receipt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intermediate-Notification"><span class="nav-number">4.2.</span> <span class="nav-text">Intermediate Notification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Delivery-Acknowledgement"><span class="nav-number">4.3.</span> <span class="nav-text">SME Delivery Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Manual-User-Acknowledgement"><span class="nav-number">4.4.</span> <span class="nav-text">SME Manual/User Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversation-Abort"><span class="nav-number">4.5.</span> <span class="nav-text">Conversation Abort</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-PDU-Type-and-Format-Definitions"><span class="nav-number">5.</span> <span class="nav-text">SMPP PDU Type and Format Definitions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-Definition"><span class="nav-number">5.1.</span> <span class="nav-text">Type Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-Field-Size-Natation"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter Field Size Natation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDU-Format-Overview"><span class="nav-number">5.3.</span> <span class="nav-text">PDU Format-Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PDU-Layout"><span class="nav-number">5.3.1.</span> <span class="nav-text">PDU Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-length"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">Command_length</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-id"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">Command_id</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#command-status"><span class="nav-number">5.3.2.</span> <span class="nav-text">command_status</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Session-Description"><span class="nav-number">2.</span> <span class="nav-text">SMPP Session Description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Outbind"><span class="nav-number">2.1.</span> <span class="nav-text">Outbind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TX-SMSC"><span class="nav-number">2.2.</span> <span class="nav-text">ESME-TX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-RX-SMSC"><span class="nav-number">2.3.</span> <span class="nav-text">ESME-RX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TRX-SMSC"><span class="nav-number">2.4.</span> <span class="nav-text">ESME-TRX-SMSC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Mode"><span class="nav-number">3.</span> <span class="nav-text">SMPP Message Mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SAF"><span class="nav-number">3.1.</span> <span class="nav-text">SAF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Datagram"><span class="nav-number">3.2.</span> <span class="nav-text">Datagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transaction-mode"><span class="nav-number">3.3.</span> <span class="nav-text">Transaction mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Type"><span class="nav-number">4.</span> <span class="nav-text">SMPP Message Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMSC-Delivery-Receipt"><span class="nav-number">4.1.</span> <span class="nav-text">SMSC Delivery Receipt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intermediate-Notification"><span class="nav-number">4.2.</span> <span class="nav-text">Intermediate Notification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Delivery-Acknowledgement"><span class="nav-number">4.3.</span> <span class="nav-text">SME Delivery Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Manual-User-Acknowledgement"><span class="nav-number">4.4.</span> <span class="nav-text">SME Manual/User Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversation-Abort"><span class="nav-number">4.5.</span> <span class="nav-text">Conversation Abort</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-PDU-Type-and-Format-Definitions"><span class="nav-number">5.</span> <span class="nav-text">SMPP PDU Type and Format Definitions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-Definition"><span class="nav-number">5.1.</span> <span class="nav-text">Type Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-Field-Size-Natation"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter Field Size Natation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDU-Format-Overview"><span class="nav-number">5.3.</span> <span class="nav-text">PDU Format-Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PDU-Layout"><span class="nav-number">5.3.1.</span> <span class="nav-text">PDU Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-length"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">Command_length</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-id"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">Command_id</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-status"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">Command_status</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sequence-number"><span class="nav-number">5.3.1.4.</span> <span class="nav-text">Sequence_number</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mandatory-Parameter"><span class="nav-number">5.3.1.5.</span> <span class="nav-text">Mandatory Parameter</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#system-id"><span class="nav-number">5.3.1.5.1.</span> <span class="nav-text">system_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#password"><span class="nav-number">5.3.1.5.2.</span> <span class="nav-text">password</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#system-type"><span class="nav-number">5.3.1.5.3.</span> <span class="nav-text">system_type</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#interface-version"><span class="nav-number">5.3.1.5.4.</span> <span class="nav-text">interface_version</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#addr-ton-source-addr-ton-dest-addr-ton-esme-addr-ton"><span class="nav-number">5.3.1.5.5.</span> <span class="nav-text">addr_ton, source_addr_ton, dest_addr_ton, esme_addr_ton</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#addr-npi-source-addr-npi-dest-addr-npi-esme-addr-npi"><span class="nav-number">5.3.1.5.6.</span> <span class="nav-text">addr_npi, source_addr_npi, dest_addr_npi, esme_addr_npi</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#address-range"><span class="nav-number">5.3.1.5.7.</span> <span class="nav-text">address_range</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#source-addr"><span class="nav-number">5.3.1.5.8.</span> <span class="nav-text">source_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#destination-addr"><span class="nav-number">5.3.1.5.9.</span> <span class="nav-text">destination_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#esme-addr"><span class="nav-number">5.3.1.5.10.</span> <span class="nav-text">esme_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#service-type"><span class="nav-number">5.3.1.5.11.</span> <span class="nav-text">service_type</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#esm-class"><span class="nav-number">5.3.1.5.12.</span> <span class="nav-text">esm_class</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#protocol-id"><span class="nav-number">5.3.1.5.13.</span> <span class="nav-text">protocol_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#priority-flag"><span class="nav-number">5.3.1.5.14.</span> <span class="nav-text">priority_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#schedule-delivery-time"><span class="nav-number">5.3.1.5.15.</span> <span class="nav-text">schedule_delivery_time</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#validity-period"><span class="nav-number">5.3.1.5.16.</span> <span class="nav-text">validity_period</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#registered-delivery"><span class="nav-number">5.3.1.5.17.</span> <span class="nav-text">registered_delivery</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#replace-if-present-flag"><span class="nav-number">5.3.1.5.18.</span> <span class="nav-text">replace_if_present_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#data-config"><span class="nav-number">5.3.1.5.19.</span> <span class="nav-text">data_config</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -748,7 +799,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動 v3.7.1</div>
 
 
 
@@ -756,7 +807,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+  <div class="theme-info">主題 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
 
 
 
