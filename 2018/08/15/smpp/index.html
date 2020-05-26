@@ -1,123 +1,31 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-TW">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.7.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.4.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yewchen.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
   <meta name="description" content="前言 國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的in">
 <meta name="keywords" content="Protocol">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SMPP 學習筆記">
 <meta property="og:url" content="https://yewchen.github.io/2018/08/15/smpp/index.html">
-<meta property="og:site_name" content="Happy4GodSoup">
+<meta property="og:site_name" content="快樂四神湯">
 <meta property="og:description" content="前言 國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的in">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/outbind.png">
@@ -137,32 +45,27 @@
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/registereddelivery.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/dataconfig.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/messagestates.png">
-<meta property="og:updated_time" content="2018-08-31T00:57:34.621Z">
+<meta property="og:updated_time" content="2020-05-26T05:44:41.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SMPP 學習筆記">
 <meta name="twitter:description" content="前言 國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的in">
 <meta name="twitter:image" content="https://yewchen.github.io/2018/08/15/smpp/outbind.png">
 
+<link rel="canonical" href="https://yewchen.github.io/2018/08/15/smpp/">
 
 
-
-
-
-  <link rel="canonical" href="https://yewchen.github.io/2018/08/15/smpp/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
   };
 </script>
 
-  <title>SMPP 學習筆記 | Happy4GodSoup</title>
+  <title>SMPP 學習筆記 | 快樂四神湯</title>
   
-
-
-
 
 
 
@@ -170,115 +73,88 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-TW">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Happy4GodSoup</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="切換導航欄">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">快樂四神湯</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">資訊科技、美食、遊戲</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
 
 
+
 <nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首頁</a>
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />標籤</a>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />歸檔</a>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
   </li>
+        <li class="menu-item menu-item-archives">
 
-      
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
 
-  
-    
-
-  
-
-  
+  </li>
+  </ul>
 </nav>
 
-
-
-  
 
 
 
@@ -286,121 +162,89 @@
     </header>
 
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <main id="main" class="main">
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
           
-          <div id="content" class="content">
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2018/08/15/smpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="Selph">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Happy4GodSoup">
+      <meta itemprop="name" content="快樂四神湯">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">SMPP 學習筆記
-              
-            
-          </h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          SMPP 學習筆記
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-
-              
-                
-              
+              <span class="post-meta-item-text">發表於</span>
 
               <time title="創建時間：2018-08-15 11:52:46" itemprop="dateCreated datePublished" datetime="2018-08-15T11:52:46+08:00">2018-08-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">更新於</span>
-                
-                <time title="修改時間：2018-08-31 08:57:34" itemprop="dateModified" datetime="2018-08-31T08:57:34+08:00">2018-08-31</time>
-              
-            
-          </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-05-26 13:44:41" itemprop="dateModified" datetime="2020-05-26T13:44:41+08:00">2020-05-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/協定相關/" itemprop="url" rel="index"><span itemprop="name">協定相關</span></a>
+                </span>
+            </span>
 
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/08/15/smpp/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/15/smpp/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ol start="0">
@@ -2554,215 +2398,156 @@
 </table>
 <h3 id="ALERT-MOTIFACATION"><a href="#ALERT-MOTIFACATION" class="headerlink" title="ALERT_MOTIFACATION"></a><strong><em>ALERT_MOTIFACATION</em></strong></h3><p>好像用不到，有機會再研究。</p>
 
-      
     </div>
 
     
-
     
     
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Protocol/" rel="tag"># Protocol</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Protocol/" rel="tag"># Protocol</a>
           </div>
 
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/31/GSM03-40/" rel="prev" title="GSM03.40">
-                GSM03.40 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
         
-          
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2018/08/31/GSM03-40/" rel="next" title="GSM03.40">
+      GSM03.40 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
+  
 
-  <aside id="sidebar" class="sidebar">
-    
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目錄
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            本站概要
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Selph</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">文章</span>
-                  </a>
-                </div>
-              
-
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                    
-                      
-                    
-                    <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">標籤</span>
-                  
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Session-Description"><span class="nav-number">2.</span> <span class="nav-text">SMPP Session Description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Outbind"><span class="nav-number">2.1.</span> <span class="nav-text">Outbind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TX-SMSC"><span class="nav-number">2.2.</span> <span class="nav-text">ESME-TX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-RX-SMSC"><span class="nav-number">2.3.</span> <span class="nav-text">ESME-RX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TRX-SMSC"><span class="nav-number">2.4.</span> <span class="nav-text">ESME-TRX-SMSC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Mode"><span class="nav-number">3.</span> <span class="nav-text">SMPP Message Mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SAF"><span class="nav-number">3.1.</span> <span class="nav-text">SAF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Datagram"><span class="nav-number">3.2.</span> <span class="nav-text">Datagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transaction-mode"><span class="nav-number">3.3.</span> <span class="nav-text">Transaction mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Type"><span class="nav-number">4.</span> <span class="nav-text">SMPP Message Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMSC-Delivery-Receipt"><span class="nav-number">4.1.</span> <span class="nav-text">SMSC Delivery Receipt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intermediate-Notification"><span class="nav-number">4.2.</span> <span class="nav-text">Intermediate Notification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Delivery-Acknowledgement"><span class="nav-number">4.3.</span> <span class="nav-text">SME Delivery Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Manual-User-Acknowledgement"><span class="nav-number">4.4.</span> <span class="nav-text">SME Manual/User Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversation-Abort"><span class="nav-number">4.5.</span> <span class="nav-text">Conversation Abort</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-PDU-Type-and-Format-Definitions"><span class="nav-number">5.</span> <span class="nav-text">SMPP PDU Type and Format Definitions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-Definition"><span class="nav-number">5.1.</span> <span class="nav-text">Type Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-Field-Size-Natation"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter Field Size Natation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDU-Format-Overview"><span class="nav-number">5.3.</span> <span class="nav-text">PDU Format-Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PDU-Layout"><span class="nav-number">5.3.1.</span> <span class="nav-text">PDU Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-length"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">Command_length</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-id"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">Command_id</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-status"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">Command_status</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sequence-number"><span class="nav-number">5.3.1.4.</span> <span class="nav-text">Sequence_number</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mandatory-Parameter"><span class="nav-number">5.3.1.5.</span> <span class="nav-text">Mandatory Parameter</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#system-id"><span class="nav-number">5.3.1.5.1.</span> <span class="nav-text">system_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#password"><span class="nav-number">5.3.1.5.2.</span> <span class="nav-text">password</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#system-type"><span class="nav-number">5.3.1.5.3.</span> <span class="nav-text">system_type</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#interface-version"><span class="nav-number">5.3.1.5.4.</span> <span class="nav-text">interface_version</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#addr-ton-source-addr-ton-dest-addr-ton-esme-addr-ton"><span class="nav-number">5.3.1.5.5.</span> <span class="nav-text">addr_ton, source_addr_ton, dest_addr_ton, esme_addr_ton</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#addr-npi-source-addr-npi-dest-addr-npi-esme-addr-npi"><span class="nav-number">5.3.1.5.6.</span> <span class="nav-text">addr_npi, source_addr_npi, dest_addr_npi, esme_addr_npi</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#address-range"><span class="nav-number">5.3.1.5.7.</span> <span class="nav-text">address_range</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#source-addr"><span class="nav-number">5.3.1.5.8.</span> <span class="nav-text">source_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#destination-addr"><span class="nav-number">5.3.1.5.9.</span> <span class="nav-text">destination_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#esme-addr"><span class="nav-number">5.3.1.5.10.</span> <span class="nav-text">esme_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#service-type"><span class="nav-number">5.3.1.5.11.</span> <span class="nav-text">service_type</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#esm-class"><span class="nav-number">5.3.1.5.12.</span> <span class="nav-text">esm_class</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#protocol-id"><span class="nav-number">5.3.1.5.13.</span> <span class="nav-text">protocol_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#priority-flag"><span class="nav-number">5.3.1.5.14.</span> <span class="nav-text">priority_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#schedule-delivery-time"><span class="nav-number">5.3.1.5.15.</span> <span class="nav-text">schedule_delivery_time</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#validity-period"><span class="nav-number">5.3.1.5.16.</span> <span class="nav-text">validity_period</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#registered-delivery"><span class="nav-number">5.3.1.5.17.</span> <span class="nav-text">registered_delivery</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#replace-if-present-flag"><span class="nav-number">5.3.1.5.18.</span> <span class="nav-text">replace_if_present_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#data-config"><span class="nav-number">5.3.1.5.19.</span> <span class="nav-text">data_config</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#sm-default-msg-id"><span class="nav-number">5.3.1.5.20.</span> <span class="nav-text">sm_default_msg_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#sm-length"><span class="nav-number">5.3.1.5.21.</span> <span class="nav-text">sm_length</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#short-message"><span class="nav-number">5.3.1.5.22.</span> <span class="nav-text">short_message</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#message-id"><span class="nav-number">5.3.1.5.23.</span> <span class="nav-text">message_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#number-of-dests"><span class="nav-number">5.3.1.5.24.</span> <span class="nav-text">number_of_dests</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dest-flag"><span class="nav-number">5.3.1.5.25.</span> <span class="nav-text">dest_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#no-unsuccess"><span class="nav-number">5.3.1.5.26.</span> <span class="nav-text">no_unsuccess</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dl-name"><span class="nav-number">5.3.1.5.27.</span> <span class="nav-text">dl_name</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#message-state"><span class="nav-number">5.3.1.5.28.</span> <span class="nav-text">message_state</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optional-Parameter"><span class="nav-number">5.3.1.6.</span> <span class="nav-text">Optional Parameter</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PDU-Length"><span class="nav-number">5.3.2.</span> <span class="nav-text">PDU Length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-PDU-Definition"><span class="nav-number">6.</span> <span class="nav-text">SMPP PDU Definition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIND"><span class="nav-number">6.1.</span> <span class="nav-text">BIND</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSMITTER"><span class="nav-number">6.1.1.</span> <span class="nav-text">BIND_TRANSMITTER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSMITTER-RESP"><span class="nav-number">6.1.2.</span> <span class="nav-text">BIND_TRANSMITTER_RESP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-RECEIVER"><span class="nav-number">6.1.3.</span> <span class="nav-text">BIND_RECEIVER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-RECEIVER-RESP"><span class="nav-number">6.1.4.</span> <span class="nav-text">BIND_RECEIVER_RESP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSCEIVER"><span class="nav-number">6.1.5.</span> <span class="nav-text">BIND_TRANSCEIVER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSCEIVER-RESP"><span class="nav-number">6.1.6.</span> <span class="nav-text">BIND_TRANSCEIVER_RESP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OUTBIND"><span class="nav-number">6.1.7.</span> <span class="nav-text">OUTBIND</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNBIND"><span class="nav-number">6.2.</span> <span class="nav-text">UNBIND</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UNBIND-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">UNBIND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNBIND-RESP"><span class="nav-number">6.2.2.</span> <span class="nav-text">UNBIND_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GENERIC-NACK"><span class="nav-number">6.3.</span> <span class="nav-text">GENERIC_NACK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUBMIT-SM"><span class="nav-number">6.4.</span> <span class="nav-text">SUBMIT_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-SM-1"><span class="nav-number">6.4.1.</span> <span class="nav-text">SUBMIT_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-SM-RESP"><span class="nav-number">6.4.2.</span> <span class="nav-text">SUBMIT_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUBMIT-MULIT"><span class="nav-number">6.5.</span> <span class="nav-text">SUBMIT_MULIT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-MULIT-1"><span class="nav-number">6.5.1.</span> <span class="nav-text">SUBMIT_MULIT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Destination-Address-definition"><span class="nav-number">6.5.1.1.</span> <span class="nav-text">Destination Address definition</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-MULIT-RESP"><span class="nav-number">6.5.2.</span> <span class="nav-text">SUBMIT_MULIT_RESP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Unsuccessful-deliveries"><span class="nav-number">6.5.2.1.</span> <span class="nav-text">Unsuccessful deliveries</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DELIVER-SM"><span class="nav-number">6.6.</span> <span class="nav-text">DELIVER_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DELIVER-SM-1"><span class="nav-number">6.6.1.</span> <span class="nav-text">DELIVER_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DELIVER-SM-RESP"><span class="nav-number">6.6.2.</span> <span class="nav-text">DELIVER_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DATA-SM"><span class="nav-number">6.7.</span> <span class="nav-text">DATA_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DATA-SM-1"><span class="nav-number">6.7.1.</span> <span class="nav-text">DATA_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DATA-SM-RESP"><span class="nav-number">6.7.2.</span> <span class="nav-text">DATA_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QUERY-SM"><span class="nav-number">6.8.</span> <span class="nav-text">QUERY_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#QUERY-SM-1"><span class="nav-number">6.8.1.</span> <span class="nav-text">QUERY_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QUERY-SM-RESP"><span class="nav-number">6.8.2.</span> <span class="nav-text">QUERY_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CANCEL-SM"><span class="nav-number">6.9.</span> <span class="nav-text">CANCEL_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CANCEL-SM-1"><span class="nav-number">6.9.1.</span> <span class="nav-text">CANCEL_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CANCEL-SM-RESP"><span class="nav-number">6.9.2.</span> <span class="nav-text">CANCEL_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REPLACE-SM"><span class="nav-number">6.10.</span> <span class="nav-text">REPLACE_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#REPLACE-SM-1"><span class="nav-number">6.10.1.</span> <span class="nav-text">REPLACE_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REPLACE-SM-RESP"><span class="nav-number">6.10.2.</span> <span class="nav-text">REPLACE_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ENQUIRE-LINK"><span class="nav-number">6.11.</span> <span class="nav-text">ENQUIRE_LINK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ENQUIRE-LINK-1"><span class="nav-number">6.11.1.</span> <span class="nav-text">ENQUIRE_LINK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ENQUIRE-LINK-RESP"><span class="nav-number">6.11.2.</span> <span class="nav-text">ENQUIRE_LINK_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ALERT-MOTIFACATION"><span class="nav-number">6.12.</span> <span class="nav-text">ALERT_MOTIFACATION</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Session-Description"><span class="nav-number">2.</span> <span class="nav-text">SMPP Session Description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Outbind"><span class="nav-number">2.1.</span> <span class="nav-text">Outbind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TX-SMSC"><span class="nav-number">2.2.</span> <span class="nav-text">ESME-TX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-RX-SMSC"><span class="nav-number">2.3.</span> <span class="nav-text">ESME-RX-SMSC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ESME-TRX-SMSC"><span class="nav-number">2.4.</span> <span class="nav-text">ESME-TRX-SMSC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Mode"><span class="nav-number">3.</span> <span class="nav-text">SMPP Message Mode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SAF"><span class="nav-number">3.1.</span> <span class="nav-text">SAF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Datagram"><span class="nav-number">3.2.</span> <span class="nav-text">Datagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transaction-mode"><span class="nav-number">3.3.</span> <span class="nav-text">Transaction mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-Message-Type"><span class="nav-number">4.</span> <span class="nav-text">SMPP Message Type</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMSC-Delivery-Receipt"><span class="nav-number">4.1.</span> <span class="nav-text">SMSC Delivery Receipt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intermediate-Notification"><span class="nav-number">4.2.</span> <span class="nav-text">Intermediate Notification</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Delivery-Acknowledgement"><span class="nav-number">4.3.</span> <span class="nav-text">SME Delivery Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SME-Manual-User-Acknowledgement"><span class="nav-number">4.4.</span> <span class="nav-text">SME Manual/User Acknowledgement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conversation-Abort"><span class="nav-number">4.5.</span> <span class="nav-text">Conversation Abort</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-PDU-Type-and-Format-Definitions"><span class="nav-number">5.</span> <span class="nav-text">SMPP PDU Type and Format Definitions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-Definition"><span class="nav-number">5.1.</span> <span class="nav-text">Type Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-Field-Size-Natation"><span class="nav-number">5.2.</span> <span class="nav-text">Parameter Field Size Natation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDU-Format-Overview"><span class="nav-number">5.3.</span> <span class="nav-text">PDU Format-Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PDU-Layout"><span class="nav-number">5.3.1.</span> <span class="nav-text">PDU Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-length"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">Command_length</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-id"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">Command_id</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Command-status"><span class="nav-number">5.3.1.3.</span> <span class="nav-text">Command_status</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sequence-number"><span class="nav-number">5.3.1.4.</span> <span class="nav-text">Sequence_number</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mandatory-Parameter"><span class="nav-number">5.3.1.5.</span> <span class="nav-text">Mandatory Parameter</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#system-id"><span class="nav-number">5.3.1.5.1.</span> <span class="nav-text">system_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#password"><span class="nav-number">5.3.1.5.2.</span> <span class="nav-text">password</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#system-type"><span class="nav-number">5.3.1.5.3.</span> <span class="nav-text">system_type</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#interface-version"><span class="nav-number">5.3.1.5.4.</span> <span class="nav-text">interface_version</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#addr-ton-source-addr-ton-dest-addr-ton-esme-addr-ton"><span class="nav-number">5.3.1.5.5.</span> <span class="nav-text">addr_ton, source_addr_ton, dest_addr_ton, esme_addr_ton</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#addr-npi-source-addr-npi-dest-addr-npi-esme-addr-npi"><span class="nav-number">5.3.1.5.6.</span> <span class="nav-text">addr_npi, source_addr_npi, dest_addr_npi, esme_addr_npi</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#address-range"><span class="nav-number">5.3.1.5.7.</span> <span class="nav-text">address_range</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#source-addr"><span class="nav-number">5.3.1.5.8.</span> <span class="nav-text">source_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#destination-addr"><span class="nav-number">5.3.1.5.9.</span> <span class="nav-text">destination_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#esme-addr"><span class="nav-number">5.3.1.5.10.</span> <span class="nav-text">esme_addr</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#service-type"><span class="nav-number">5.3.1.5.11.</span> <span class="nav-text">service_type</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#esm-class"><span class="nav-number">5.3.1.5.12.</span> <span class="nav-text">esm_class</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#protocol-id"><span class="nav-number">5.3.1.5.13.</span> <span class="nav-text">protocol_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#priority-flag"><span class="nav-number">5.3.1.5.14.</span> <span class="nav-text">priority_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#schedule-delivery-time"><span class="nav-number">5.3.1.5.15.</span> <span class="nav-text">schedule_delivery_time</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#validity-period"><span class="nav-number">5.3.1.5.16.</span> <span class="nav-text">validity_period</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#registered-delivery"><span class="nav-number">5.3.1.5.17.</span> <span class="nav-text">registered_delivery</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#replace-if-present-flag"><span class="nav-number">5.3.1.5.18.</span> <span class="nav-text">replace_if_present_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#data-config"><span class="nav-number">5.3.1.5.19.</span> <span class="nav-text">data_config</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#sm-default-msg-id"><span class="nav-number">5.3.1.5.20.</span> <span class="nav-text">sm_default_msg_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#sm-length"><span class="nav-number">5.3.1.5.21.</span> <span class="nav-text">sm_length</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#short-message"><span class="nav-number">5.3.1.5.22.</span> <span class="nav-text">short_message</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#message-id"><span class="nav-number">5.3.1.5.23.</span> <span class="nav-text">message_id</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#number-of-dests"><span class="nav-number">5.3.1.5.24.</span> <span class="nav-text">number_of_dests</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dest-flag"><span class="nav-number">5.3.1.5.25.</span> <span class="nav-text">dest_flag</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#no-unsuccess"><span class="nav-number">5.3.1.5.26.</span> <span class="nav-text">no_unsuccess</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#dl-name"><span class="nav-number">5.3.1.5.27.</span> <span class="nav-text">dl_name</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#message-state"><span class="nav-number">5.3.1.5.28.</span> <span class="nav-text">message_state</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optional-Parameter"><span class="nav-number">5.3.1.6.</span> <span class="nav-text">Optional Parameter</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PDU-Length"><span class="nav-number">5.3.2.</span> <span class="nav-text">PDU Length</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMPP-PDU-Definition"><span class="nav-number">6.</span> <span class="nav-text">SMPP PDU Definition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIND"><span class="nav-number">6.1.</span> <span class="nav-text">BIND</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSMITTER"><span class="nav-number">6.1.1.</span> <span class="nav-text">BIND_TRANSMITTER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSMITTER-RESP"><span class="nav-number">6.1.2.</span> <span class="nav-text">BIND_TRANSMITTER_RESP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-RECEIVER"><span class="nav-number">6.1.3.</span> <span class="nav-text">BIND_RECEIVER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-RECEIVER-RESP"><span class="nav-number">6.1.4.</span> <span class="nav-text">BIND_RECEIVER_RESP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSCEIVER"><span class="nav-number">6.1.5.</span> <span class="nav-text">BIND_TRANSCEIVER</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIND-TRANSCEIVER-RESP"><span class="nav-number">6.1.6.</span> <span class="nav-text">BIND_TRANSCEIVER_RESP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OUTBIND"><span class="nav-number">6.1.7.</span> <span class="nav-text">OUTBIND</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNBIND"><span class="nav-number">6.2.</span> <span class="nav-text">UNBIND</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UNBIND-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">UNBIND</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UNBIND-RESP"><span class="nav-number">6.2.2.</span> <span class="nav-text">UNBIND_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GENERIC-NACK"><span class="nav-number">6.3.</span> <span class="nav-text">GENERIC_NACK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUBMIT-SM"><span class="nav-number">6.4.</span> <span class="nav-text">SUBMIT_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-SM-1"><span class="nav-number">6.4.1.</span> <span class="nav-text">SUBMIT_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-SM-RESP"><span class="nav-number">6.4.2.</span> <span class="nav-text">SUBMIT_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SUBMIT-MULIT"><span class="nav-number">6.5.</span> <span class="nav-text">SUBMIT_MULIT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-MULIT-1"><span class="nav-number">6.5.1.</span> <span class="nav-text">SUBMIT_MULIT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Destination-Address-definition"><span class="nav-number">6.5.1.1.</span> <span class="nav-text">Destination Address definition</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SUBMIT-MULIT-RESP"><span class="nav-number">6.5.2.</span> <span class="nav-text">SUBMIT_MULIT_RESP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Unsuccessful-deliveries"><span class="nav-number">6.5.2.1.</span> <span class="nav-text">Unsuccessful deliveries</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DELIVER-SM"><span class="nav-number">6.6.</span> <span class="nav-text">DELIVER_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DELIVER-SM-1"><span class="nav-number">6.6.1.</span> <span class="nav-text">DELIVER_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DELIVER-SM-RESP"><span class="nav-number">6.6.2.</span> <span class="nav-text">DELIVER_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DATA-SM"><span class="nav-number">6.7.</span> <span class="nav-text">DATA_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DATA-SM-1"><span class="nav-number">6.7.1.</span> <span class="nav-text">DATA_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DATA-SM-RESP"><span class="nav-number">6.7.2.</span> <span class="nav-text">DATA_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QUERY-SM"><span class="nav-number">6.8.</span> <span class="nav-text">QUERY_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#QUERY-SM-1"><span class="nav-number">6.8.1.</span> <span class="nav-text">QUERY_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QUERY-SM-RESP"><span class="nav-number">6.8.2.</span> <span class="nav-text">QUERY_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CANCEL-SM"><span class="nav-number">6.9.</span> <span class="nav-text">CANCEL_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CANCEL-SM-1"><span class="nav-number">6.9.1.</span> <span class="nav-text">CANCEL_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CANCEL-SM-RESP"><span class="nav-number">6.9.2.</span> <span class="nav-text">CANCEL_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REPLACE-SM"><span class="nav-number">6.10.</span> <span class="nav-text">REPLACE_SM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#REPLACE-SM-1"><span class="nav-number">6.10.1.</span> <span class="nav-text">REPLACE_SM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REPLACE-SM-RESP"><span class="nav-number">6.10.2.</span> <span class="nav-text">REPLACE_SM_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ENQUIRE-LINK"><span class="nav-number">6.11.</span> <span class="nav-text">ENQUIRE_LINK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ENQUIRE-LINK-1"><span class="nav-number">6.11.1.</span> <span class="nav-text">ENQUIRE_LINK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ENQUIRE-LINK-RESP"><span class="nav-number">6.11.2.</span> <span class="nav-text">ENQUIRE_LINK_RESP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ALERT-MOTIFACATION"><span class="nav-number">6.12.</span> <span class="nav-text">ALERT_MOTIFACATION</span></a></li></ol></li></ol></div>
       </div>
-    </main>
+      <!--/noindex-->
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Selph</span>
-
-  
-
-  
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Selph"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Selph</p>
+  <div class="site-description" itemprop="description">⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
 </div>
 
 
 
+      </div>
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動 v3.7.1</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-  <div class="theme-info">主題 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+      </div>
+    </main>
 
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
+        
 
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Selph</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
 
         
 
@@ -2773,146 +2558,70 @@
 
 
 
-        
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-	
-    
-
-    
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://Selph.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
   }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://yewchen.github.io/2018/08/15/smpp/";
+    this.page.identifier = "2018/08/15/smpp/";
+    this.page.title = "SMPP 學習筆記";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://Selph.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
 
 </body>
 </html>

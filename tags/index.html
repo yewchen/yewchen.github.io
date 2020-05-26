@@ -20,20 +20,19 @@
     var CONFIG = {"hostname":"yewchen.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言 國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《GSM03.40 v5.7.1》。  研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。 GSM03.40側重於SMS的技術實現，主要針對編碼方式。">
-<meta name="keywords" content="Protocol">
-<meta property="og:type" content="article">
-<meta property="og:title" content="GSM03.40">
-<meta property="og:url" content="https://yewchen.github.io/2018/08/31/GSM03-40/index.html">
+  <meta name="description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
+<meta property="og:type" content="website">
+<meta property="og:title" content="標籤">
+<meta property="og:url" content="https://yewchen.github.io/tags/index.html">
 <meta property="og:site_name" content="快樂四神湯">
-<meta property="og:description" content="前言 國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《GSM03.40 v5.7.1》。  研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。 GSM03.40側重於SMS的技術實現，主要針對編碼方式。">
+<meta property="og:description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2020-05-26T05:44:53.077Z">
+<meta property="og:updated_time" content="2020-05-26T05:40:06.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GSM03.40">
-<meta name="twitter:description" content="前言 國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《GSM03.40 v5.7.1》。  研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。 GSM03.40側重於SMS的技術實現，主要針對編碼方式。">
+<meta name="twitter:title" content="標籤">
+<meta name="twitter:description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
 
-<link rel="canonical" href="https://yewchen.github.io/2018/08/31/GSM03-40/">
+<link rel="canonical" href="https://yewchen.github.io/tags/">
 
 
 <script id="page-configurations">
@@ -41,12 +40,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>GSM03.40 | 快樂四神湯</title>
+  <title>標籤 | 快樂四神湯
+</title>
   
 
 
@@ -154,166 +154,51 @@
       <div class="main-inner">
         <div class="content-wrap">
           
+  
+  
 
-          <div class="content post posts-expand">
+          <div class="content page posts-expand">
             
 
     
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2018/08/31/GSM03-40/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Selph">
-      <meta itemprop="description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="快樂四神湯">
-    </span>
+    
+    
+    <div class="post-block" lang="zh-TW">
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          GSM03.40
-        </h1>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
+<h1 class="post-title" itemprop="name headline">標籤
+</h1>
 
-              <time title="創建時間：2018-08-31 08:55:12" itemprop="dateCreated datePublished" datetime="2018-08-31T08:55:12+08:00">2018-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-05-26 13:44:53" itemprop="dateModified" datetime="2020-05-26T13:44:53+08:00">2020-05-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/協定相關/" itemprop="url" rel="index"><span itemprop="name">協定相關</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2018/08/31/GSM03-40/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/31/GSM03-40/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
+<div class="post-meta">
   
 
-        </div>
-      </header>
+</div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ol start="0">
-<li>國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。</li>
-<li>研讀的版本為《GSM03.40 v5.7.1》。 </li>
-<li>研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。</li>
-<li>GSM03.40側重於SMS的技術實現，主要針對編碼方式。</li>
-</ol>
-<h1 id="TPDU-Type"><a href="#TPDU-Type" class="headerlink" title="TPDU Type"></a>TPDU Type</h1><table>
-<thead>
-<tr>
-<th>TP-MTI</th>
-<th>direction</th>
-<th>message type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0 0</td>
-<td>MS → SC</td>
-<td>SMS-DELIVER-REPORT</td>
-</tr>
-<tr>
-<td>0 0</td>
-<td>SC → MS</td>
-<td>SMS-DELIVER</td>
-</tr>
-<tr>
-<td>0 1</td>
-<td>MS → SC</td>
-<td>SMS-SUBMIT</td>
-</tr>
-<tr>
-<td>0 1</td>
-<td>SC → MS</td>
-<td>SMS-SUBMIT-REPORT</td>
-</tr>
-<tr>
-<td>1 0</td>
-<td>MS → SC</td>
-<td>SMS-COMMAND</td>
-</tr>
-<tr>
-<td>1 0</td>
-<td>SC → MS</td>
-<td>SMS-STATUS-REPORT</td>
-</tr>
-<tr>
-<td>1 1</td>
-<td>any</td>
-<td>Reserved</td>
-</tr>
-</tbody>
-</table>
-
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Protocol/" rel="tag"># Protocol</a>
+      
+      
+      <div class="post-body">
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+              目前共有 1 個標籤
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/Protocol/" style="font-size: 12px; color: #ccc">Protocol</a>
+            </div>
           </div>
-
         
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2018/08/15/smpp/" rel="prev" title="SMPP 學習筆記">
-      <i class="fa fa-chevron-left"></i> SMPP 學習筆記
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/26/測試文章/" rel="next" title="測試文章">
-      測試文章 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      </div>
+      
+      
+      
     </div>
-      </footer>
     
-  </article>
-  
-  
-  
 
+    
+    
+    
 
 
           </div>
@@ -371,7 +256,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TPDU-Type"><span class="nav-number">2.</span> <span class="nav-text">TPDU Type</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -491,9 +375,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://yewchen.github.io/2018/08/31/GSM03-40/";
-    this.page.identifier = "2018/08/31/GSM03-40/";
-    this.page.title = "GSM03.40";
+    this.page.url = "https://yewchen.github.io/tags/index.html";
+    this.page.identifier = "tags/index.html";
+    this.page.title = "標籤";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
