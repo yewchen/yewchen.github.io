@@ -164,6 +164,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Selph">
+      <meta itemprop="description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="快樂四神湯">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/" class="post-title-link" itemprop="url">Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2020-05-26 15:18:28 / 修改時間：16:32:38" itemprop="dateCreated datePublished" datetime="2020-05-26T15:18:28+08:00">2020-05-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/作業系統/" itemprop="url" rel="index"><span itemprop="name">作業系統</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。</p>
+<h2 id="磁碟系統"><a href="#磁碟系統" class="headerlink" title="磁碟系統"></a>磁碟系統</h2><p><img src="disksystem.png" alt=""><br>首先談談Disk System(磁碟系統)的組成。　　　<br>他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。<br>前面有提到這是由多片的Disks所組成，因此在上圖來看：不同面卻相同Track No所形成之組合則稱為Cylinder(磁柱)。<br>落落長的講了一堆，但總言之就是：</p>
+<p>　　Disk System：Disk &gt; Track &gt; Sector　　</p>
+<p>例：Disk System有10片Disks，每片的雙面皆可存(但最上與最下面不可存)</p>
+<p>　　每片有2048條Tracks，<br>　　每條有521個Sectors，<br>　　每個Sectors可存16KB。</p>
+<p>則：( 10 <em> 2 - 2 ) </em> 2048 <em> 512 </em> 16KB<br>       =18 <em> 211 </em> 29 <em> 26 </em> 210 Bytes = 18 * 16GB = 288GB</p>
+<p>這288GB就是我們一般所知的硬碟大小。</p>
+<p>　　再來就是跟大家使用硬碟時息息相關的Disk Access Time(磁碟存取時間)。<br>　　我們再使用磁碟的存取時間時，一般是由三個運作時間加總而得的：<br>　　1.Seek Time<br>　　　簡單的說，就是花在找Track的時間。<br>　　　將磁頭移動到欲存取的Track上方所花之時間。<br>　　2.Latency Time(或稱revolution time/rotation time)<br>　　　簡單的說，就是下一步花在找Sector的時間。<br>　　　當磁頭移動到目標Track時，此時Disk會自己轉動欲存取的Sector到磁頭下方。<br>　　3.Transfer Time<br>　　　簡單的說，就是將Data傳到Memory之間的傳輸時間。</p>
+<p>　　上述三者通常以Seek Time最花時間，因為其主要是以I/O的硬體運作為主，也因此在Latency Time的部分變成是以運轉Disk本身而非移動磁頭了。</p>
+<p>　　那麼，相關的轉速的計算就是我們平常常常遇到卻不甚了解的部分。</p>
+<p>例1：Disk轉速：7200rpm，求Avg. revolution time.(rpm=revolution per minute)<br>　　7200rpm = 1分鐘Disk可以轉7200圈<br>　　            = 1秒鐘Disk可以轉120圈(相信大家現在大概可以感受磁碟讀取的聲音跟轉速的關係了吧XD)<br>　　所以Disk轉一圈需要花1/120秒。<br>　　那麼依據統計學的中央極限定理CLT可以估計平均值即是成常態分配於正中央位置，<br>　　因此平均revolution time = 0.5*1/120=1/240秒</p>
+<p>例2：Disk轉速：6000rpm，<br>　　Disk每面有2048條Tracks<br>　　每條Track有256個Sectors<br>　　每個Sector可存4KB。　　　　＝＞求Transfer Rate ?</p>
+<p>　　6000rpm = 1秒鐘Disk可以轉100圈<br>(因為每一面Disk是由許多Tracks所組成的，當磁頭移動到目標Track的時候，就換成要讓Disk自轉目標Sector下，因此Disk每轉一圈救代表可以傳輸一條Track之容量。)<br>　　而每一條Track之容量=256<em>4KB=1MB<br>　　因此Transfer Rate = 100</em>1MB/sec = 100MB/sec</p>
+<p>例3：承例2，若File大小為5MB，Disk之平均Seek Time為2秒，則read this file 需要花？秒<br>　　Disk Access Time =<br>　　　Seek Time + Latency(Revolution) Time + Transfer Time<br>　　＝　　2秒　　+　0.5 * 1/100秒　          +　5MB/100MB (sec)<br>　　＝（2+1/100+1/20）秒</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2020/05/26/測試文章/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2675,20 +2770,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>

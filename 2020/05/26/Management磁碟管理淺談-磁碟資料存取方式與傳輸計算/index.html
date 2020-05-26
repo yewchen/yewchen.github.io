@@ -20,19 +20,22 @@
     var CONFIG = {"hostname":"yewchen.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
+  <meta name="description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。 磁碟系統首先談談Disk System(磁碟系統)的組成。　　　他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。前面有提到這是由多片的Disks">
+<meta name="keywords" content="Seek Time, Latency Time, Transfer Time">
 <meta property="og:type" content="article">
-<meta property="og:title" content="測試文章">
-<meta property="og:url" content="https://yewchen.github.io/2020/05/26/測試文章/index.html">
+<meta property="og:title" content="Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算">
+<meta property="og:url" content="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/index.html">
 <meta property="og:site_name" content="快樂四神湯">
-<meta property="og:description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
+<meta property="og:description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。 磁碟系統首先談談Disk System(磁碟系統)的組成。　　　他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。前面有提到這是由多片的Disks">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:updated_time" content="2020-05-26T02:31:25.021Z">
+<meta property="og:image" content="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/disksystem.png">
+<meta property="og:updated_time" content="2020-05-26T08:32:38.279Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="測試文章">
-<meta name="twitter:description" content="⁽⁽٩(๑˃̶͈̀ ᗨ ˂̶͈́)۶⁾⁾">
+<meta name="twitter:title" content="Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算">
+<meta name="twitter:description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。 磁碟系統首先談談Disk System(磁碟系統)的組成。　　　他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。前面有提到這是由多片的Disks">
+<meta name="twitter:image" content="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/disksystem.png">
 
-<link rel="canonical" href="https://yewchen.github.io/2020/05/26/測試文章/">
+<link rel="canonical" href="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/">
 
 
 <script id="page-configurations">
@@ -45,7 +48,7 @@
   };
 </script>
 
-  <title>測試文章 | 快樂四神湯</title>
+  <title>Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算 | 快樂四神湯</title>
   
 
 
@@ -166,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2020/05/26/測試文章/">
+    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -179,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          測試文章
+          Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算
         </h1>
 
         <div class="post-meta">
@@ -188,8 +191,18 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-05-26 10:31:25" itemprop="dateCreated datePublished" datetime="2020-05-26T10:31:25+08:00">2020-05-26</time>
+              <time title="創建時間：2020-05-26 15:18:28 / 修改時間：16:32:38" itemprop="dateCreated datePublished" datetime="2020-05-26T15:18:28+08:00">2020-05-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/作業系統/" itemprop="url" rel="index"><span itemprop="name">作業系統</span></a>
+                </span>
             </span>
 
           
@@ -201,8 +214,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2020/05/26/測試文章/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/26/測試文章/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -217,7 +230,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。</p>
+<h2 id="磁碟系統"><a href="#磁碟系統" class="headerlink" title="磁碟系統"></a>磁碟系統</h2><p><img src="disksystem.png" alt=""><br>首先談談Disk System(磁碟系統)的組成。　　　<br>他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。<br>前面有提到這是由多片的Disks所組成，因此在上圖來看：不同面卻相同Track No所形成之組合則稱為Cylinder(磁柱)。<br>落落長的講了一堆，但總言之就是：</p>
+<p>　　Disk System：Disk &gt; Track &gt; Sector　　</p>
+<p>例：Disk System有10片Disks，每片的雙面皆可存(但最上與最下面不可存)</p>
+<p>　　每片有2048條Tracks，<br>　　每條有521個Sectors，<br>　　每個Sectors可存16KB。</p>
+<p>則：( 10 <em> 2 - 2 ) </em> 2048 <em> 512 </em> 16KB<br>       =18 <em> 211 </em> 29 <em> 26 </em> 210 Bytes = 18 * 16GB = 288GB</p>
+<p>這288GB就是我們一般所知的硬碟大小。</p>
+<p>　　再來就是跟大家使用硬碟時息息相關的Disk Access Time(磁碟存取時間)。<br>　　我們再使用磁碟的存取時間時，一般是由三個運作時間加總而得的：<br>　　1.Seek Time<br>　　　簡單的說，就是花在找Track的時間。<br>　　　將磁頭移動到欲存取的Track上方所花之時間。<br>　　2.Latency Time(或稱revolution time/rotation time)<br>　　　簡單的說，就是下一步花在找Sector的時間。<br>　　　當磁頭移動到目標Track時，此時Disk會自己轉動欲存取的Sector到磁頭下方。<br>　　3.Transfer Time<br>　　　簡單的說，就是將Data傳到Memory之間的傳輸時間。</p>
+<p>　　上述三者通常以Seek Time最花時間，因為其主要是以I/O的硬體運作為主，也因此在Latency Time的部分變成是以運轉Disk本身而非移動磁頭了。</p>
+<p>　　那麼，相關的轉速的計算就是我們平常常常遇到卻不甚了解的部分。</p>
+<p>例1：Disk轉速：7200rpm，求Avg. revolution time.(rpm=revolution per minute)<br>　　7200rpm = 1分鐘Disk可以轉7200圈<br>　　            = 1秒鐘Disk可以轉120圈(相信大家現在大概可以感受磁碟讀取的聲音跟轉速的關係了吧XD)<br>　　所以Disk轉一圈需要花1/120秒。<br>　　那麼依據統計學的中央極限定理CLT可以估計平均值即是成常態分配於正中央位置，<br>　　因此平均revolution time = 0.5*1/120=1/240秒</p>
+<p>例2：Disk轉速：6000rpm，<br>　　Disk每面有2048條Tracks<br>　　每條Track有256個Sectors<br>　　每個Sector可存4KB。　　　　＝＞求Transfer Rate ?</p>
+<p>　　6000rpm = 1秒鐘Disk可以轉100圈<br>(因為每一面Disk是由許多Tracks所組成的，當磁頭移動到目標Track的時候，就換成要讓Disk自轉目標Sector下，因此Disk每轉一圈救代表可以傳輸一條Track之容量。)<br>　　而每一條Track之容量=256<em>4KB=1MB<br>　　因此Transfer Rate = 100</em>1MB/sec = 100MB/sec</p>
+<p>例3：承例2，若File大小為5MB，Disk之平均Seek Time為2秒，則read this file 需要花？秒<br>　　Disk Access Time =<br>　　　Seek Time + Latency(Revolution) Time + Transfer Time<br>　　＝　　2秒　　+　0.5 * 1/100秒　          +　5MB/100MB (sec)<br>　　＝（2+1/100+1/20）秒</p>
+
     </div>
 
     
@@ -225,6 +252,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Seek-Time-Latency-Time-Transfer-Time/" rel="tag"># Seek Time, Latency Time, Transfer Time</a>
+          </div>
 
         
 
@@ -232,13 +262,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2018/08/31/GSM03-40/" rel="prev" title="GSM03.40">
-      <i class="fa fa-chevron-left"></i> GSM03.40
+    <a href="/2020/05/26/測試文章/" rel="prev" title="測試文章">
+      <i class="fa fa-chevron-left"></i> 測試文章
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/" rel="next" title="Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算">
-      Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -304,6 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁碟系統"><span class="nav-number">2.</span> <span class="nav-text">磁碟系統</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -423,9 +451,9 @@
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://yewchen.github.io/2020/05/26/測試文章/";
-    this.page.identifier = "2020/05/26/測試文章/";
-    this.page.title = "測試文章";
+    this.page.url = "https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/";
+    this.page.identifier = "2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/";
+    this.page.title = "Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
