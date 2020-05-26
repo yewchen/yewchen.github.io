@@ -112,20 +112,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Happy4GodSoup">
-<meta property="og:url" content="https://yewchen.github.io/archives/2018/08/index.html">
+  <meta name="description" content="前言 國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《GSM03.40 v5.7.1》。  研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。 GSM03.40側重於SMS的技術實現，主要針對編碼方式。">
+<meta name="keywords" content="Protocol">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GSM03.40">
+<meta property="og:url" content="https://yewchen.github.io/2018/08/31/GSM03-40/index.html">
 <meta property="og:site_name" content="Happy4GodSoup">
+<meta property="og:description" content="前言 國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《GSM03.40 v5.7.1》。  研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。 GSM03.40側重於SMS的技術實現，主要針對編碼方式。">
 <meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2018-08-31T02:18:25.277Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Happy4GodSoup">
+<meta name="twitter:title" content="GSM03.40">
+<meta name="twitter:description" content="前言 國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《GSM03.40 v5.7.1》。  研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。 GSM03.40側重於SMS的技術實現，主要針對編碼方式。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yewchen.github.io/archives/2018/08/"/>
+  <link rel="canonical" href="https://yewchen.github.io/2018/08/31/GSM03-40/"/>
 
 
 
@@ -135,7 +140,7 @@
   };
 </script>
 
-  <title>歸檔 | Happy4GodSoup</title>
+  <title>GSM03.40 | Happy4GodSoup</title>
   
 
 
@@ -182,7 +187,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,7 +240,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />歸檔</a>
   </li>
@@ -247,22 +252,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -288,117 +277,224 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共有 3 篇文章。 繼續努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2018/08/31/GSM03-40/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Selph">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Happy4GodSoup">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/08/31/GSM03-40/" itemprop="url">
-              
-                <span itemprop="name">GSM03.40</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">GSM03.40
+              
+            
+          </h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-31T08:55:12+08:00"
-              content="2018-08-31" >
-          08-31
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
 
+              
+                
+              
+
+              <time title="創建時間：2018-08-31 08:55:12 / 修改時間：10:18:25" itemprop="dateCreated datePublished" datetime="2018-08-31T08:55:12+08:00">2018-08-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/15/smpp/" itemprop="url">
-              
-                <span itemprop="name">SMPP 學習筆記</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-15T11:52:46+08:00"
-              content="2018-08-15" >
-          08-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ol start="0">
+<li>國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。</li>
+<li>研讀的版本為《GSM03.40 v5.7.1》。 </li>
+<li>研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。</li>
+<li>GSM03.40側重於SMS的技術實現，主要針對編碼方式。</li>
+</ol>
+<h1 id="TPDU-Type"><a href="#TPDU-Type" class="headerlink" title="TPDU Type"></a>TPDU Type</h1><table>
+<thead>
+<tr>
+<th>TP-MTI</th>
+<th>direction</th>
+<th>message type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 0</td>
+<td>MS → SC</td>
+<td>SMS-DELIVER-REPORT</td>
+</tr>
+<tr>
+<td>0 0</td>
+<td>SC → MS</td>
+<td>SMS-DELIVER</td>
+</tr>
+<tr>
+<td>0 1</td>
+<td>MS → SC</td>
+<td>SMS-SUBMIT</td>
+</tr>
+<tr>
+<td>0 1</td>
+<td>SC → MS</td>
+<td>SMS-SUBMIT-REPORT</td>
+</tr>
+<tr>
+<td>1 0</td>
+<td>MS → SC</td>
+<td>SMS-COMMAND</td>
+</tr>
+<tr>
+<td>1 0</td>
+<td>SC → MS</td>
+<td>SMS-STATUS-REPORT</td>
+</tr>
+<tr>
+<td>1 1</td>
+<td>any</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Protocol/" rel="tag"># Protocol</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/15/smpp/" rel="next" title="SMPP 學習筆記">
+                <i class="fa fa-chevron-left"></i> SMPP 學習筆記
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/26/測試文章/" rel="prev" title="測試文章">
+                測試文章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -419,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概要
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -478,6 +583,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TPDU-Type"><span class="nav-number">2.</span> <span class="nav-text">TPDU Type</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -615,6 +736,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
 
   
 

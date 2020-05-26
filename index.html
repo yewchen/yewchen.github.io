@@ -289,6 +289,332 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2020/05/26/測試文章/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Selph">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Happy4GodSoup">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/26/測試文章/" itemprop="url">
+                  測試文章
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+
+              
+                
+              
+
+              <time title="創建時間：2020-05-26 10:31:25" itemprop="dateCreated datePublished" datetime="2020-05-26T10:31:25+08:00">2020-05-26</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2018/08/31/GSM03-40/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Selph">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Happy4GodSoup">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/31/GSM03-40/" itemprop="url">
+                  GSM03.40
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+
+              
+                
+              
+
+              <time title="創建時間：2018-08-31 08:55:12 / 修改時間：10:18:25" itemprop="dateCreated datePublished" datetime="2018-08-31T08:55:12+08:00">2018-08-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ol start="0">
+<li>國內與GSM相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。</li>
+<li>研讀的版本為《GSM03.40 v5.7.1》。 </li>
+<li>研讀目的：因為簡訊中心SMSC要跟ss7 信號網路交換，因此許多SMPP的操作背景知識，也跟 ss7 有關。</li>
+<li>GSM03.40側重於SMS的技術實現，主要針對編碼方式。</li>
+</ol>
+<h1 id="TPDU-Type"><a href="#TPDU-Type" class="headerlink" title="TPDU Type"></a>TPDU Type</h1><table>
+<thead>
+<tr>
+<th>TP-MTI</th>
+<th>direction</th>
+<th>message type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 0</td>
+<td>MS → SC</td>
+<td>SMS-DELIVER-REPORT</td>
+</tr>
+<tr>
+<td>0 0</td>
+<td>SC → MS</td>
+<td>SMS-DELIVER</td>
+</tr>
+<tr>
+<td>0 1</td>
+<td>MS → SC</td>
+<td>SMS-SUBMIT</td>
+</tr>
+<tr>
+<td>0 1</td>
+<td>SC → MS</td>
+<td>SMS-SUBMIT-REPORT</td>
+</tr>
+<tr>
+<td>1 0</td>
+<td>MS → SC</td>
+<td>SMS-COMMAND</td>
+</tr>
+<tr>
+<td>1 0</td>
+<td>SC → MS</td>
+<td>SMS-STATUS-REPORT</td>
+</tr>
+<tr>
+<td>1 1</td>
+<td>any</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yewchen.github.io/2018/08/15/smpp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -352,7 +678,7 @@
                 
                   <span class="post-meta-item-text">更新於</span>
                 
-                <time title="修改時間：2018-08-17 16:21:02" itemprop="dateModified" datetime="2018-08-17T16:21:02+08:00">2018-08-17</time>
+                <time title="修改時間：2018-08-31 08:57:34" itemprop="dateModified" datetime="2018-08-31T08:57:34+08:00">2018-08-31</time>
               
             
           </span>
@@ -2270,7 +2596,72 @@
 </tr>
 </tbody>
 </table>
-<h4 id="QUERY-SM-RESP"><a href="#QUERY-SM-RESP" class="headerlink" title="QUERY_SM_RESP"></a><strong><em>QUERY_SM_RESP</em></strong></h4><h3 id="CANCEL-SM"><a href="#CANCEL-SM" class="headerlink" title="CANCEL_SM"></a><strong><em>CANCEL_SM</em></strong></h3><p>用來刪除尚在SMSC中還未發送出去的訊息。<br>通常應該都是以 <strong><em>message_id</em></strong> 當做過濾條件一次刪一筆，但文件上有寫也可以用 <strong><em>service_type</em></strong> 當作過濾條件一次刪多筆。  </p>
+<h4 id="QUERY-SM-RESP"><a href="#QUERY-SM-RESP" class="headerlink" title="QUERY_SM_RESP"></a><strong><em>QUERY_SM_RESP</em></strong></h4><table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Size octets</th>
+<th>Type</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>command_length</td>
+<td>4</td>
+<td>Integer</td>
+<td></td>
+</tr>
+<tr>
+<td>command_id</td>
+<td>4</td>
+<td>Integer</td>
+<td>0x80000003</td>
+</tr>
+<tr>
+<td>command_status</td>
+<td>4</td>
+<td>Integer</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>sequence_number</td>
+<td>4</td>
+<td>Integer</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>message_id</td>
+<td>Var.max-65</td>
+<td>C-Octet-String</td>
+<td>若有查找到才會有值。</td>
+</tr>
+<tr>
+<td>final_date</td>
+<td>1 or 17</td>
+<td>C-Octet-String</td>
+<td>短訊狀態為最終狀態才會有值，若查詢時尚未到達最終狀態則為NULL。</td>
+</tr>
+<tr>
+<td>message_state</td>
+<td>1</td>
+<td>Integer</td>
+<td></td>
+</tr>
+<tr>
+<td>error_code</td>
+<td>1</td>
+<td>Integer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CANCEL-SM"><a href="#CANCEL-SM" class="headerlink" title="CANCEL_SM"></a><strong><em>CANCEL_SM</em></strong></h3><p>用來刪除尚在SMSC中還未發送出去的訊息。<br>通常應該都是以 <strong><em>message_id</em></strong> 當做過濾條件一次刪一筆，但文件上有寫也可以用 <strong><em>service_type</em></strong> 當作過濾條件一次刪多筆。  </p>
 <h4 id="CANCEL-SM-1"><a href="#CANCEL-SM-1" class="headerlink" title="CANCEL_SM"></a><strong><em>CANCEL_SM</em></strong></h4><table>
 <thead>
 <tr>
@@ -2553,7 +2944,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">文章</span>
                   </a>
                 </div>
@@ -2610,7 +3001,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
