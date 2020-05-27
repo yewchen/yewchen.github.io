@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/registereddelivery.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/dataconfig.png">
 <meta property="og:image" content="https://yewchen.github.io/2018/08/15/smpp/messagestates.png">
-<meta property="og:updated_time" content="2020-05-26T05:44:41.486Z">
+<meta property="og:updated_time" content="2020-05-27T01:03:05.407Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SMPP 學習筆記">
 <meta name="twitter:description" content="前言 國內與SMPP相關的文章整理分享很少，硬嗑文獻又很痛苦。雖然網路上找的到翻譯過的文獻，但其實閱讀門檻依舊很高，所以自己邊研讀邊整理。目前尚未有實作的整理筆記，未來會一一納入。 研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。  SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的in">
@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-05-26 13:44:41" itemprop="dateModified" datetime="2020-05-26T13:44:41+08:00">2020-05-26</time>
+                <time title="修改時間：2020-05-27 09:03:05" itemprop="dateModified" datetime="2020-05-27T09:03:05+08:00">2020-05-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,7 +257,8 @@
 <li>研讀的版本為《Short Message Peer to Peer Protocol Specification v3.4》。 </li>
 <li>SMPPv5.0主要是增加對CBS(Cell Broadcast Centres)的interface，以及增加一些TLV的實作，可以參考<a href="https://wirelessr.gitbooks.io/working-life/content/tlvsu_cheng_jiang_jie.html" target="_blank" rel="noopener">這篇文章</a>。  </li>
 <li>SMSC會進行ss7信號網路交換，因此許多SMPP的操作背景知識也與ss7相關。可以去參考SMPPv3.4中的1.4Reference：GSM 03.40 v5.7.1、GSM 03.38 v5.5.1、GSM MAP 09.02 v5.11.0。  </li>
-<li>研讀中，尚未有機會實際碰觸了解，僅是紀錄了一些目前覺得相對重要的東西（偏實作技術面）。  </li>
+<li>研讀中，尚未有機會實際碰觸了解，僅是紀錄了一些目前覺得相對重要的東西（偏實作技術面）。 <a id="more"></a> 
+</li>
 </ol>
 <h2 id="SMPP-Session-Description"><a href="#SMPP-Session-Description" class="headerlink" title="SMPP Session Description"></a>SMPP Session Description</h2><p>SMSC與ESME之間的Session皆是由ESME發起，SMPP定義了以下幾種五種形式：</p>
 <ol>

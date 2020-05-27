@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yewchen.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。 磁碟系統首先談談Disk System(磁碟系統)的組成。　　　他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。前面有提到這是由多片的Disks">
+  <meta name="description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。">
 <meta name="keywords" content="Seek Time, Latency Time, Transfer Time">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算">
 <meta property="og:url" content="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/index.html">
 <meta property="og:site_name" content="快樂四神湯">
-<meta property="og:description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。 磁碟系統首先談談Disk System(磁碟系統)的組成。　　　他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。前面有提到這是由多片的Disks">
+<meta property="og:description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。">
 <meta property="og:locale" content="zh-TW">
 <meta property="og:image" content="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/disksystem.png">
-<meta property="og:updated_time" content="2020-05-26T08:32:38.279Z">
+<meta property="og:updated_time" content="2020-05-27T02:11:03.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Disk Management磁碟管理淺談_磁碟資料存取方式與傳輸計算">
-<meta name="twitter:description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。 磁碟系統首先談談Disk System(磁碟系統)的組成。　　　他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。前面有提到這是由多片的Disks">
+<meta name="twitter:description" content="前言這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。">
 <meta name="twitter:image" content="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/disksystem.png">
 
 <link rel="canonical" href="https://yewchen.github.io/2020/05/26/Management磁碟管理淺談-磁碟資料存取方式與傳輸計算/">
@@ -191,10 +191,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2020-05-26 15:18:28 / 修改時間：16:32:38" itemprop="dateCreated datePublished" datetime="2020-05-26T15:18:28+08:00">2020-05-26</time>
+              <time title="創建時間：2020-05-26 15:18:28" itemprop="dateCreated datePublished" datetime="2020-05-26T15:18:28+08:00">2020-05-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-05-27 10:11:03" itemprop="dateModified" datetime="2020-05-27T10:11:03+08:00">2020-05-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -231,19 +237,44 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這部分在過去的OS課一定都學過了，不過因為滿有趣的而且也是平常常看到的名詞卻沒有去釐清而衍生了很多的問題，所以大致上來記錄一下。</p>
-<h2 id="磁碟系統"><a href="#磁碟系統" class="headerlink" title="磁碟系統"></a>磁碟系統</h2><p><img src="disksystem.png" alt=""><br>首先談談Disk System(磁碟系統)的組成。　　　<br>他是由多片的Disks(磁碟)所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的Tracks(磁軌)組成，而每條磁軌又可以劃分成多個Sectors(磁區)。<br>前面有提到這是由多片的Disks所組成，因此在上圖來看：不同面卻相同Track No所形成之組合則稱為Cylinder(磁柱)。<br>落落長的講了一堆，但總言之就是：</p>
-<p>　　Disk System：Disk &gt; Track &gt; Sector　　</p>
-<p>例：Disk System有10片Disks，每片的雙面皆可存(但最上與最下面不可存)</p>
-<p>　　每片有2048條Tracks，<br>　　每條有521個Sectors，<br>　　每個Sectors可存16KB。</p>
-<p>則：( 10 <em> 2 - 2 ) </em> 2048 <em> 512 </em> 16KB<br>       =18 <em> 211 </em> 29 <em> 26 </em> 210 Bytes = 18 * 16GB = 288GB</p>
+<a id="more"></a>
+<p><code>sadf ssdf</code></p>
+<h2 id="磁碟系統概述"><a href="#磁碟系統概述" class="headerlink" title="磁碟系統概述"></a>磁碟系統概述</h2><p><img src="disksystem.png" alt=""></p>
+<div class="note success">
+            <p>首先談談Disk System(磁碟系統)的組成。 </p>
+          </div> 
+<p>他是由多片的<u>Disks(磁碟)</u>所組成，通常每片Disk的雙面都可以儲存資料，而每一面由很多條的<u>Tracks(磁軌)</u>組成，而每條磁軌又可以劃分成多個<u>Sectors(磁區)</u>。 </p>
+<p>前面有提到這是由多片的Disks所組成，因此在上圖來看：不同面卻相同Track No所形成之組合則稱為<u>Cylinder(磁柱)</u>。 </p>
+<p>落落長的講了一堆，但總言之就是：<br><code>Disk System：Disk &gt; Track &gt; Sector</code> </p>
+<div class="note danger">
+            <p>範例：<br>Disk System有10片Disks，每片有2048條Tracks，每條有521個Sectors，每個Sectors可存16KB。<br>每片的雙面皆可存，但最上與最下面不可存。</p>
+          </div>
+<p>則：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">( 10 * 2 - 2 ) * 2048 * 512 * 16KB</span><br><span class="line"><span class="section">= 18 * 211 * 29 * 26 * 210 Bytes = 18 * 16GB </span></span><br><span class="line"><span class="section">= 288GB</span></span><br></pre></td></tr></table></figure></p>
 <p>這288GB就是我們一般所知的硬碟大小。</p>
-<p>　　再來就是跟大家使用硬碟時息息相關的Disk Access Time(磁碟存取時間)。<br>　　我們再使用磁碟的存取時間時，一般是由三個運作時間加總而得的：<br>　　1.Seek Time<br>　　　簡單的說，就是花在找Track的時間。<br>　　　將磁頭移動到欲存取的Track上方所花之時間。<br>　　2.Latency Time(或稱revolution time/rotation time)<br>　　　簡單的說，就是下一步花在找Sector的時間。<br>　　　當磁頭移動到目標Track時，此時Disk會自己轉動欲存取的Sector到磁頭下方。<br>　　3.Transfer Time<br>　　　簡單的說，就是將Data傳到Memory之間的傳輸時間。</p>
-<p>　　上述三者通常以Seek Time最花時間，因為其主要是以I/O的硬體運作為主，也因此在Latency Time的部分變成是以運轉Disk本身而非移動磁頭了。</p>
-<p>　　那麼，相關的轉速的計算就是我們平常常常遇到卻不甚了解的部分。</p>
-<p>例1：Disk轉速：7200rpm，求Avg. revolution time.(rpm=revolution per minute)<br>　　7200rpm = 1分鐘Disk可以轉7200圈<br>　　            = 1秒鐘Disk可以轉120圈(相信大家現在大概可以感受磁碟讀取的聲音跟轉速的關係了吧XD)<br>　　所以Disk轉一圈需要花1/120秒。<br>　　那麼依據統計學的中央極限定理CLT可以估計平均值即是成常態分配於正中央位置，<br>　　因此平均revolution time = 0.5*1/120=1/240秒</p>
-<p>例2：Disk轉速：6000rpm，<br>　　Disk每面有2048條Tracks<br>　　每條Track有256個Sectors<br>　　每個Sector可存4KB。　　　　＝＞求Transfer Rate ?</p>
-<p>　　6000rpm = 1秒鐘Disk可以轉100圈<br>(因為每一面Disk是由許多Tracks所組成的，當磁頭移動到目標Track的時候，就換成要讓Disk自轉目標Sector下，因此Disk每轉一圈救代表可以傳輸一條Track之容量。)<br>　　而每一條Track之容量=256<em>4KB=1MB<br>　　因此Transfer Rate = 100</em>1MB/sec = 100MB/sec</p>
-<p>例3：承例2，若File大小為5MB，Disk之平均Seek Time為2秒，則read this file 需要花？秒<br>　　Disk Access Time =<br>　　　Seek Time + Latency(Revolution) Time + Transfer Time<br>　　＝　　2秒　　+　0.5 * 1/100秒　          +　5MB/100MB (sec)<br>　　＝（2+1/100+1/20）秒</p>
+<h2 id="常見名詞解釋"><a href="#常見名詞解釋" class="headerlink" title="常見名詞解釋"></a>常見名詞解釋</h2><p>再來就是跟大家使用硬碟時息息相關的Disk Access Time(磁碟存取時間)。<br>我們再使用磁碟的存取時間時，一般是由三個運作時間加總而得的： </p>
+<p><code>1.Seek Time</code><br>簡單的說，就是花在找Track的時間。<br>將磁頭移動到欲存取的Track上方所花之時間。 </p>
+<p><code>2.Latency Time(或稱revolution time/rotation time)</code><br>簡單的說，就是下一步花在找Sector的時間。<br>當磁頭移動到目標Track時，此時Disk會自己轉動欲存取的Sector到磁頭下方。 </p>
+<p><code>3.Transfer Time</code><br>簡單的說，就是將Data傳到Memory之間的傳輸時間。 </p>
+<div class="note ">
+            <p>上述三者通常以Seek Time最花時間，因為其主要是以I/O的硬體運作為主，也因此在Latency Time的部分變成是以運轉Disk本身而非移動磁頭了。</p>
+          </div>
+<h2 id="範例計算"><a href="#範例計算" class="headerlink" title="範例計算"></a>範例計算</h2><p>那麼，相關的轉速的計算就是我們平常常常遇到卻不甚了解的部分。 </p>
+<div class="note danger">
+            <p>例1：<br>Disk轉速：7200rpm，求Avg. revolution time.(rpm=revolution per minute)</p>
+          </div>
+<p>7200rpm = 1分鐘Disk可以轉7200圈<br>        = 1秒鐘Disk可以轉120圈(相信大家現在大概可以感受磁碟讀取的聲音跟轉速的關係了吧XD)<br>所以Disk轉一圈需要花1/120秒。 </p>
+<p>那麼依據統計學的中央極限定理CLT可以估計平均值即是成常態分配於正中央位置<br>因此平均<code>revolution time = 0.5*1/120=1/240</code> 秒</p>
+<div class="note danger">
+            <p>例2：<br>Disk轉速：6000rpm，Disk每面有2048條Tracks，每條Track有256個Sectors，每個Sector可存4KB。<br>求Transfer Rate ?</p>
+          </div>
+<p>6000rpm = 1秒鐘Disk可以轉100圈<br>(因為每一面Disk是由許多Tracks所組成的，當磁頭移動到目標Track的時候，就換成要讓Disk自轉目標Sector下，因此Disk每轉一圈救代表可以傳輸一條Track之容量。)<br>而每一條Track之容量 = <code>256*4KB</code> = <code>1MB</code><br>因此Transfer Rate = <code>100*1MB/sec</code> = <code>100MB/sec</code></p>
+<div class="note danger">
+            <p>例3：<br>承例2，若File大小為5MB，Disk之平均Seek Time為2秒，則read this file 需要花？秒</p>
+          </div> 
+<p>Disk Access Time = Seek Time + Latency(Revolution) Time + Transfer Time </p>
+<p><code>＝　　2秒　　+　0.5 * 1/100秒　          +　5MB/100MB (sec)</code> </p>
+<p><code>＝（2+1/100+1/20）秒</code></p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>這篇文章最初是在2010/9的時候發的，之後我也沒有在研究相關領域的東西，而是往軟的方向走了。現已普及的SSD大概也不是用這種概念在運行的吧，只是覺得之前的文章跑版亂糟糟所以又重新翻修了一次。<br>總之，這篇文章就留給還在苦讀考試會考的計組學生用吧…</p>
 
     </div>
 
@@ -331,7 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁碟系統"><span class="nav-number">2.</span> <span class="nav-text">磁碟系統</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#磁碟系統概述"><span class="nav-number">2.</span> <span class="nav-text">磁碟系統概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常見名詞解釋"><span class="nav-number">3.</span> <span class="nav-text">常見名詞解釋</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#範例計算"><span class="nav-number">4.</span> <span class="nav-text">範例計算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結論"><span class="nav-number">5.</span> <span class="nav-text">結論</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
